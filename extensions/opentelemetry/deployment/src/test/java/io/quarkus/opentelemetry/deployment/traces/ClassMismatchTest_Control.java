@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 public class ClassMismatchTest_Control {
@@ -16,6 +17,12 @@ public class ClassMismatchTest_Control {
         assertThat(myEnum).isNotNull();
     }
 
+
+    @ParameterizedTest
+    @EnumSource(MyEnum.class)
+    void test2(MyEnum myEnum) {
+        assertThat(myEnum).isNotNull();
+    }
     private static enum MyEnum {
         VALUE1, VALUE2
     }

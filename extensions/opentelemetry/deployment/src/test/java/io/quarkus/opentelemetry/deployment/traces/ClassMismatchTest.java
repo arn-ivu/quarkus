@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import io.quarkus.test.QuarkusUnitTest;
@@ -23,6 +24,13 @@ public class ClassMismatchTest {
     @ParameterizedTest
     @MethodSource("provideEnumValues")
     void test(MyEnum myEnum) {
+        assertThat(myEnum).isNotNull();
+    }
+
+
+    @ParameterizedTest
+    @EnumSource(MyEnum.class)
+    void test2(MyEnum myEnum) {
         assertThat(myEnum).isNotNull();
     }
 
